@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["TEAMID.com.YOURTEAM.recs"],
+        "components": [
+          { "/": "/recs/i/*", "comment": "Invite links: /recs/i/?c=CODE" }
+        ]
+      }
+    ]
+  }
+}
