@@ -2,7 +2,7 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["TEAMID.com.YOURTEAM.recs"],
+        "appIDs": ["26274KUMU8.com.get.recs"],
         "components": [
           { "/": "/recs/i/*", "comment": "Invite links: /recs/i/?c=CODE" }
         ]
@@ -10,3 +10,4 @@
     ]
   }
 }
+ 
