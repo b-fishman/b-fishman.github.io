@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join me on Recs</title>
+<style>
+body{margin:0;background:#173029;color:#F3EEE3;font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;text-align:center}
+main{max-width:420px;margin:0 auto;padding:56px 24px}
+h1{font-family:Georgia,serif;font-weight:400;font-size:2rem;margin:0 0 8px}
+.code{font:700 2rem/1.2 ui-monospace,Menlo,monospace;letter-spacing:.18em;background:#10241F;border:1px solid #3F5A52;border-radius:14px;padding:14px;margin:18px 0}
+a.b{display:block;margin:12px 0;padding:14px;border-radius:26px;background:#D9A55B;color:#17302A;font-weight:700;text-decoration:none}
+button{background:none;border:1px solid #3F5A52;color:#F3EEE3;border-radius:26px;padding:12px 18px;font:inherit;min-height:44px}
+.muted{color:#B7C2B9;font-size:.9375rem}
+</style></head>
+<body><main>
+<h1>You're invited to Recs</h1>
+<p>A friend wants to swap recs with you.</p>
+<div id="ok" hidden>
+  <p class="muted">Your invite code</p>
+  <div class="code" id="code"></div>
+  <a class="b" id="open" href="#">Open in Recs</a>
+  <a class="b" href="https://apps.apple.com/app/idYOUR_APP_ID">Get Recs on the App Store</a>
+  <p><button id="copy">Copy code</button></p>
+  <p class="muted">New to Recs? Install it, tap "Have an invite code?" on the welcome screen, and enter the code above.</p>
+</div>
+<p id="bad" class="muted" hidden>This link is missing its invite code. Ask your friend to send it again.</p>
+</main>
+<script>
+(function () {
+  var c = (new URLSearchParams(location.search).get('c') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+  if (!/^[A-HJ-NP-Z2-9]{8}$/.test(c)) { document.getElementById('bad').hidden = false; return; }
+  document.getElementById('ok').hidden = false;
+  document.getElementById('code').textContent = c;
+  var app = 'recs://invite/' + c;
+  document.getElementById('open').href = app;
+  document.getElementById('copy').onclick = function () { var b = this; if (navigator.clipboard) navigator.clipboard.writeText(c).then(function () { b.textContent = 'Code copied'; }); };
+  // Try the app once; if it is not installed, the page stays and shows the code.
+  setTimeout(function () { location.href = app; }, 250);
+})();
+</script>
+</body></html>
